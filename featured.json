@@ -1,0 +1,27 @@
+[
+  {
+    "owner": "joangonzalez02",
+    "repo": "scrollytelling",
+    "title": "Scrollytelling del crecimiento de Cancún Quintana Roo",
+    "description": " Scrollytelling del crecimiento de Cancún Quintana Roo a través de un scrollytelling interactivo. El proyecto utiliza datos históricos y visualizaciones para mostrar cómo ha evolucionado la ciudad a lo largo del tiempo, destacando hitos importantes y cambios significativos en su desarrollo urbano.",
+    "image": "/static/previews/1.png",
+    "tags": ["JavaScript", "Mapbox", "Web"]
+  },
+  {
+    "owner": "joangonzalez02",
+    "repo": "mylaundryappweb-lw",
+    "title": "Proyecto de lavandería",
+    "image": "/static/previews/2.png",
+    "tags": ["Nextjs", "Reactjs", "API", "Supabase"]
+  },
+  {
+    "owner": "melnotte",
+    "repo": "Historia-1-V2-ANA",
+    "title": "Scrollytelling - V2",
+    "description": " Scrollytelling del crecimiento de Cancún Quintana Roo a través de un scrollytelling interactivo. El proyecto utiliza datos históricos y visualizaciones para mostrar cómo ha evolucionado la ciudad a lo largo del tiempo, destacando hitos importantes y cambios significativos en su desarrollo urbano.",
+    "image": "/static/previews/3.png",
+    "homepage": "https://melnotte.github.io/Historia-1-V2-ANA/",
+    "tags": ["Html","JavaScript","CSS", "Web"]
+  }
+ 
+]

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="project-detail">
+  <div class="project-header">
+    <h1>{{ project.title or project.name }}</h1>
+    <p class="muted">{{ project.description or '' }}</p>
+    <div class="project-meta">{{ project.language or '' }} • ★ {{ project.stargazers_count or 0 }}</div>
+    {% if project.tags and project.tags|length > 0 %}
+      <div class="tags" style="margin-top:0.6rem">
+        {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if project.homepage %}
+      <p><a class="btn" href="{{ project.homepage }}" target="_blank">Demo</a></p>
+    {% endif %}
+  </div>
+
+  <div class="project-preview">
+    {% if project.preview %}
+      <img src="{{ project.preview }}" alt="preview" />
+    {% else %}
+      <img src="/static/placeholder.svg" alt="placeholder" />
+    {% endif %}
+  </div>
+
+  <section class="readme">
+    {% if readme_html %}
+      <h2>README</h2>
+      <div class="readme-body">{{ readme_html|safe }}</div>
+    {% else %}
+      <p>No hay README disponible.</p>
+    {% endif %}
+  </section>
+
+  <p><a href="/">← Volver</a></p>
+</article>
+{% endblock %}

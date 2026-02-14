@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="hero">
+	<div class="hero-inner">
+		<!-- Show full name in the hero, keep the header (brand) as SITE_ACCENT + SITE_TITLE -->
+		<h1>{{ site_name }}</h1>
+		<p class="lead">{{ site_subtitle }}</p>
+		<p class="cta"><a class="btn" href="#projects">Ver proyectos</a></p>
+	</div>
+</section>
+
+<section id="projects">
+	{% if error %}
+		<div class="alert">{{ error }}</div>
+	{% endif %}
+
+	{% if projects and projects|length > 0 %}
+	<div class="grid">
+		{% for p in projects %}
+		<article class="card">
+			<div class="card-inner">
+				<a class="card-link" href="/project/{{ p.owner }}/{{ p.name }}">
+					<div class="card-image">
+						{% if p.preview %}
+							<img src="{{ p.preview }}" alt="{{ p.name }} preview" />
+						{% else %}
+							<img src="/static/placeholder.svg" alt="placeholder" />
+						{% endif %}
+					</div>
+					<div class="card-body">
+						<h3>{{ p.title or p.name }}</h3>
+						<p class="muted">{{ p.description or 'Sin descripción' }}</p>
+						{% if p.tags and p.tags|length > 0 %}
+						<div class="tags">
+							{% for tag in p.tags %}
+								<span class="tag">{{ tag }}</span>
+							{% endfor %}
+						</div>
+						{% endif %}
+						<div class="meta">
+							<span>{{ p.language or '' }}</span>
+							<span>★ {{ p.stargazers_count or 0 }}</span>
+						</div>
+					</div>
+				</a>
+				<div class="card-actions">
+					{% if p.homepage %}
+						<a class="btn" href="{{ p.homepage }}" target="_blank" rel="noopener">Demo</a>
+					{% endif %}
+					<a class="btn" href="{{ p.html_url }}" target="_blank" rel="noopener" style="margin-left:0.6rem">Código</a>
+				</div>
+			</div>
+		</article>
+		{% endfor %}
+	</div>
+	{% else %}
+		<p>No hay proyectos para mostrar. Configura <code>featured.json</code> o añade <code>GITHUB_USER</code> en tu `.env`.</p>
+	{% endif %}
+</section>
+
+<section id="about">
+	<h2>Sobre mí</h2>
+	<p>De técnico en informática a Ingeniero en Datos: 
+<br>Mi viaje en la tecnología.
+<br>Mi curiosidad por la computación empezó en la preparatoria y hoy, como Ingeniero en Datos por la Unicaribe, esa chispa sigue más viva que nunca. Me especialicé en Innovación en TIC, pero me considero un "eterno estudiante" de la tecnología; me encanta saltar entre el desarrollo web, los datos y los sistemas para tener una visión 360° de los proyectos.
+
+<br>Soy fiel creyente de que la organización y la disciplina (que aplico tanto en el código como en el gimnasio) son la clave para el éxito. Originario de Cancún, amante de las tapiocas y de las rodadas en moto con buena música.</br></p>
+</section>
+
+<section id="contact">
+	<h2>Contacto</h2>
+	<p>Email: <a href="mailto:jofergo02@hotmail.com">jofergo02@hotmail.com</a></p>
+	<p>LinkedIn: <a href="https://www.linkedin.com/in/joan-gonzalez-garcia/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joan-gonzalez-garcia/</a></p>
+</section>
+
+{% endblock %}
