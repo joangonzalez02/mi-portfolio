@@ -23,6 +23,15 @@
     "image": "/static/previews/3.png",
     "homepage": "https://melnotte.github.io/Historia-1-V2-ANA/",
     "tags": ["Html","JavaScript","CSS", "Web"]
+  },
+  {
+    "owner": "melnotte",
+    "repo": "bitacora-pmdu-cancun",
+    "title": "Bitacora PMDU Cancún",
+    "description": " Bitacora del PMDU de Cancún, un proyecto que documenta y analiza el Plan Maestro de Desarrollo Urbano (PMDU) de Cancún. El proyecto recopila información sobre las políticas, proyectos y estrategias implementadas en el desarrollo urbano de Cancún, proporcionando una visión detallada de cómo se ha planificado y ejecutado el crecimiento de la ciudad a lo largo del tiempo.",
+    "image": "/static/previews/4.png",
+    "homepage": "https://bitacora-pmdu-cancun.vercel.app/",
+    "tags": ["Typescript","PLpgSQL","CSS", "Web"]
   }
  
 ]
