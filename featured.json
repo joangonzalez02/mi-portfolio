@@ -5,6 +5,7 @@
     "title": "Scrollytelling del crecimiento de Cancún Quintana Roo",
     "description": " Scrollytelling del crecimiento de Cancún Quintana Roo a través de un scrollytelling interactivo. El proyecto utiliza datos históricos y visualizaciones para mostrar cómo ha evolucionado la ciudad a lo largo del tiempo, destacando hitos importantes y cambios significativos en su desarrollo urbano.",
     "image": "/static/previews/1.png",
+    "homepage": "https://joangonzalez02.github.io/scrollytelling/",
     "tags": ["JavaScript", "Mapbox", "Web"]
   },
   {
