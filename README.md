@@ -1,41 +1,129 @@
-# Portfolio Flask - Starter
+# Mi Portfolio
 
-Este es un proyecto pequeño en Flask que obtiene tus repositorios públicos de GitHub y los muestra en una página simple.
+Mi portafolio personal donde muestro mis proyectos seleccionados de GitHub. Puedo elegir qué proyectos mostrar, agregar descripciones personalizadas, imágenes de preview y enlaces a demostraciones en vivo.
 
-Características
-- Obtiene repos con la API pública de GitHub
-- Soporta token opcional para evitar límites de la API
-- Plantilla HTML minimalista que puedes personalizar (añadir screenshots, demos, filtros)
+## Características
 
-Requisitos
-- Python 3.8+
+- ✨ Selecciono qué proyectos mostrar mediante `featured.json`
+- 🎨 Diseño moderno con glassmorphism y tarjetas interactivas
+- 📸 Extrae automáticamente imágenes del README de cada proyecto
+- 🔗 Botones para ver demos en vivo y acceder al código
+- 📱 Responsive y se ve bien en cualquier dispositivo
+- 🏷️ Etiquetas por proyecto para clasificarlos
+- 🌙 Modal interactivo con preview del README
 
-Cómo ejecutar (Windows PowerShell)
+## Instalación local
 
+### Requisitos
+- Python 3.9+
+- Git
+
+### Pasos
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/joangonzalez02/mi-portfolio.git
+cd mi-portfolio
+```
+
+2. Crea y activa un ambiente virtual (PowerShell en Windows):
 ```powershell
-# crear y activar entorno virtual
 python -m venv venv
-venv\Scripts\Activate
-# instalar dependencias
+.\venv\Scripts\Activate
+```
+
+3. Instala las dependencias:
+```bash
 pip install -r requirements.txt
-# copiar y editar variables
-copy .env.example .env
-# editar .env y poner tu GITHUB_USER (OBLIGATORIO para que tu portfolio muestre tus repos automáticamente)
-# opcionalmente añade GITHUB_TOKEN para aumentar el límite de la API
-# ejecutar
+```
+
+4. Crea un archivo `.env` con tus datos (copia `.env.example` como referencia):
+```
+GITHUB_USER=tu_usuario_github
+SITE_NAME=Tu Nombre Completo
+SITE_ACCENT=Mi
+```
+
+5. Ejecuta el servidor:
+```bash
 python app.py
 ```
 
-Abre: http://127.0.0.1:5000/ — la app usará el valor de `GITHUB_USER` en `.env` y mostrará directamente tus proyectos destacados.
+6. Abre http://localhost:5000 en tu navegador.
 
-Siguientes pasos recomendados
-- Personalizar la plantilla `templates/index.html` con screenshots, etiquetas y enlaces a demos.
-- Añadir una sección "Sobre mí" y formulario de contacto o enlace a LinkedIn.
-- Crear un README destacado en cada repo de GitHub con instrucciones y demo.
-- Deploy: puedes usar Render, Railway o Heroku (añade Procfile y variables de entorno). Si quieres, puedo añadir el archivo de deploy y CI.
+## Configuración
 
-Django
+### Variables de entorno (`.env`)
+
+- `GITHUB_USER`: Tu usuario de GitHub (requerido si no usas `featured.json`)
+- `SITE_NAME`: Tu nombre completo que aparece en el hero
+- `SITE_ACCENT`: La primera palabra del título en la cabecera (en azul). Defecto: "Mi"
+- `GITHUB_TOKEN`: (Opcional) Token personal de GitHub para más solicitudes a la API
+
+### Seleccionar proyectos (`featured.json`)
+
+Edita `featured.json` para elegir qué proyectos mostrar:
+
+```json
+[
+  {
+    "owner": "tu_usuario",
+    "repo": "nombre-del-repo",
+    "title": "Título personalizado",
+    "description": "Descripción del proyecto",
+    "image": "/static/previews/1.png",
+    "homepage": "https://link-a-demo.com",
+    "tags": ["Flask", "Python"]
+  }
+]
+```
+
+## Despliegue
+
+### En Render (recomendado)
+
+1. Ve a https://render.com y crea una cuenta
+2. Conecta tu cuenta de GitHub
+3. Crea un nuevo Web Service:
+   - Selecciona este repositorio
+   - Build Command: (dejar vacío)
+   - Start Command: `gunicorn app:app`
+4. En "Environment" añade las variables de producción:
+   - `GITHUB_USER=tu_usuario`
+   - `SITE_NAME=Tu Nombre`
+   - `SITE_ACCENT=Mi` (o lo que prefieras)
+5. Render hace deploy automático cada que haces push a `main`
+
+## Estructura del proyecto
+
+```
+.
+├── app.py              # Aplicación Flask
+├── requirements.txt    # Dependencias de Python
+├── Procfile           # Configuración para Render/Heroku
+├── runtime.txt        # Versión de Python
+├── featured.json      # Proyectos a mostrar
+├── .env               # Variables de entorno (no incluir en git)
+├── templates/         # Templates HTML
+│   ├── base.html
+│   ├── index.html
+│   └── project.html
+└── static/            # CSS, JS, imágenes
+    ├── css/
+    ├── js/
+    └── previews/      # Imágenes de preview
+```
+
+## Próximos pasos
+
+- [ ] Agregar más proyectos a `featured.json`
+- [ ] Personalizar el CSS en `static/css/style.css`
+- [ ] Cambiar el color de acento en las variables de entorno
+- [ ] Agregar más información en la sección "Sobre mí"
+
 ---
-Si prefieres Django puedo generar un proyecto base que haga lo mismo (app llamada `projects`) con una vista que consuma la API de GitHub, templates, y configuración mínima para desplegar. ¿Quieres que la genere ahora?
 
-Si quieres que conecte automáticamente repos seleccionados (por etiquetas o nombres) y muestre contenidos como screenshots y README renderizado, dime tus preferencias y lo implemento.
+Hecho con 💙
+
+
+
